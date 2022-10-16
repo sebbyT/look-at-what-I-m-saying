@@ -9,6 +9,8 @@ var y=0;
 var button;
 var started;
 
+var webcam // id tag for webcam page
+
 var capture;
 function start(){
   userStartAudio();
@@ -19,21 +21,14 @@ function setup() {
   getAudioContext().suspend();
   button = createButton('start');
   button.position(-100,-100);
-  //button.mousePressed(userStartAudio);
-  //started = false;
 
 start();
-  
-  //button.mousePressed(start);
-  // if  == true (start);
   
   mic = new p5.AudioIn();
   mic.start();
   fft = new p5.FFT();
   fft.setInput(mic);
   vol = mic.getLevel();
-  //frameRate(10);
-  //background(0);
   
   prevTreb=createVector(0,0);
   prevBass=createVector(0,0);
@@ -83,15 +78,12 @@ start();
   
   //beginShape MID();
   let midmax = map(mid, 0, 255, 0, 200); //can adjust where necessary
-    //rotate(PI/2*3);
     xoff = map(cos(a+phase), -1, 5, 0, midmax);
     yoff = map(sin(a), -1, 5, 0, midmax);
     r = midmax+200;
     x = r * cos(a);
     y = r * sin(a);
     stroke((255),random(200,210),random(0,130));
-    //stroke(gold);
-    //stroke(255,0,0);
     strokeWeight(3.5);
     
     if (a==0){ // no line from center to radius
@@ -116,9 +108,6 @@ start();
     x = r * cos(a);
     y = r * sin(a);
     stroke((255),random(200,210),random(0,130)); //add variating colour
-    //stroke(gold);
-    //stroke(255,0,0);
-    //stroke((255),random(200,225),random(0,220)); //add variating colour
     strokeWeight(4);
     
     if (a==0){ // no line from center to radius
@@ -137,11 +126,4 @@ start();
   phase += 1;
   a+=0.1/18.2; // changes speed/duration
   
-}
-
-//push();
-//  translate(width,0);
-//  scale(-1, 1);
-//  image(capture, 0, 0, windowWidth, windowHeight);
-//  pop();
 }
