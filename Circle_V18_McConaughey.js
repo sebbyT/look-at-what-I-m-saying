@@ -7,6 +7,7 @@ var a=0;
 var x=0;
 var y=0;
 var button;
+var button2;
 var started;
 
 var webcam // id tag for webcam page
@@ -21,6 +22,10 @@ function setup() {
   getAudioContext().suspend();
   button = createButton('start');
   button.position(-100,-100);
+  
+  button2 = createButton('webcamPage');
+  button.position(100,100);
+  button.mousePressed(webcamPage);
 
 start();
   
